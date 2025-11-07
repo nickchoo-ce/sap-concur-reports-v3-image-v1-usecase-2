@@ -1,0 +1,174 @@
+{
+  "info": {
+    "name": "SAP Concur Reports v3 & Image v1 - sample",
+    "description": "Demonstrates the retrieval of report- and entry-level receipts using Reports v3 and Image v1 APIs.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1 – Get Report ID (Reports v3)",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "Fetch report list and obtain the Report ID.",
+        "url": {
+          "raw": "{{dataCenterURI}}/api/v3.0/expense/reports",
+          "protocol": "",
+          "host": [
+            "{{dataCenterURI}}"
+          ],
+          "path": [
+            "api",
+            "v3.0",
+            "expense",
+            "reports"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "2 – Retrieve Report-Level Receipts",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "Download report-level receipts as PDF.",
+        "url": {
+          "raw": "{{dataCenterURI}}/api/image/v1.0/report/{{reportId}}",
+          "protocol": "",
+          "host": [
+            "{{dataCenterURI}}"
+          ],
+          "path": [
+            "api",
+            "image",
+            "v1.0",
+            "report",
+            "{{reportId}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "3 – Get Expense Entries (Entries v3)",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "Retrieve all entries for the given report.",
+        "url": {
+          "raw": "{{dataCenterURI}}/api/v3.0/expense/entries?reportID={{reportId}}",
+          "protocol": "",
+          "host": [
+            "{{dataCenterURI}}"
+          ],
+          "path": [
+            "api",
+            "v3.0",
+            "expense",
+            "entries?reportID={{reportId}}"
+          ],
+          "query": [
+            {
+              "key": "reportID",
+              "value": "{{reportId}}"
+            }
+          ],
+          "variable": []
+        }
+      }
+    },
+    {
+      "name": "4 – Retrieve Entry-Level Receipts",
+      "event": [],
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "Authorization",
+            "value": "Bearer {{access_token}}",
+            "disabled": false,
+            "type": "default"
+          }
+        ],
+        "auth": {
+          "type": "noauth"
+        },
+        "description": "Download entry-level receipt image.",
+        "url": {
+          "raw": "{{dataCenterURI}}/api/image/v1.0/expenseentry/{{entryId}}",
+          "protocol": "",
+          "host": [
+            "{{dataCenterURI}}"
+          ],
+          "path": [
+            "api",
+            "image",
+            "v1.0",
+            "expenseentry",
+            "{{entryId}}"
+          ],
+          "query": [],
+          "variable": []
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "dataCenterURI",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "access_token",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "reportId",
+      "value": "",
+      "type": "default"
+    },
+    {
+      "key": "entryId",
+      "value": "",
+      "type": "default"
+    }
+  ]
+}
